@@ -1,0 +1,32 @@
+//Answer Question A
+
+select "transaction_no", "customer_email", "amount", "payment_channel_name", "payment_provider_name", "paid_at"
+from transaction where status = 'Success' and paid_at = now() - INTERVAL '1 DAYS'
+
+//Answer Question B
+SELECT "name"
+FROM payment_channel
+WHERE id NOT IN (SELECT id_channel FROM transaction 
+WHERE paid_at = now() - INTERVAL '1 DAYS' group by id_channel)
+
+//Answer Question C
+SELECT c."email" "customer_email", SUM(t."amount") "total_transaction_amount"
+FROM "transaction" t, "customer" c
+WHERE t."customer_id" = c."id"
+ORDER BY SUM(t."amount") desc, c."email" asc
+LIMIT 10
+
+//Answer Question D
+SELECT pf."payment_channel_code", pf."admin_fee" "cheapest_admin_fee", pp."name" "cheapest_payment_provider"
+FROM "payment_channel_provider_fee" pf, "payment_channel" pc, "payment_provider" pp
+WHERE pf."payment_channel_code" = pc."code"
+AND pf."payment_provider_code" = pp."code"
+ORDER BY pf."admin_fee" asc
+
+//Answer Question E
+Index has to be created in table "transaction" on column "transaction_no"
+because transaction is always needed for most operation
+
+//Answer Question F
+1. table for transaction detail is very helpful
+2. table product, price and customer must be separate

@@ -1,0 +1,32 @@
+{
+	"info": {
+		"_postman_id": "cc9b6eda-377b-4648-b722-9676604a6dc1",
+		"name": "BDN Test 2020",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Cargo System Validator",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[{\"packageId\": \"item001\", \"type\": \"S\", \"width\": 5, \"height\": 8, \"length\": 2, \"weight\": 5},\r\n{\"packageId\": \"item002\", \"type\": \"L\", \"temperature\": 25, \"weight\": 6}, \r\n{\"packageId\": \"item003\", \"type\": \"L\", \"temperature\": 19, \"weight\": 6}, \r\n{\"packageId\": \"item004\", \"type\": \"S\", \"width\": \"1\", \"height\": 15, \"length\": 2, \"weight\":1}, \r\n{\"packageId\": \"item005\", \"type\": \"S\", \"width\": 1, \"height\": \"1\", \"length\": 10, \"weight\":2}, \r\n{\"packageId\": \"item006\", \"type\": \"L\", \"temperature\": 25, \"weight\":10}]"
+				},
+				"url": {
+					"raw": "localhost:8000",
+					"host": [
+						"localhost"
+					],
+					"port": "8000"
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
